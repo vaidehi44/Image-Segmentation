@@ -44,9 +44,7 @@ def find_new_centers():
                 count+=1
                 add+=pixels[j]
         mean = add/count
-        print(mean)
         mean = mean.astype(np.int32())
-        print(mean)
         centers[i]=mean
         
 for itr in range(20):
