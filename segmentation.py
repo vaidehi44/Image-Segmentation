@@ -1,6 +1,7 @@
 from PIL import Image
 import random
 import numpy as np
+from tqdm import tqdm
 
 
 img = Image.open("Image.jpg", 'r')
@@ -46,7 +47,7 @@ def find_new_centers():
         centers[i] = mean
         
         
-for itr in range(10):
+for itr in tqdm(range(10)):
     assign_pixel_clusters()
     find_new_centers()
 
