@@ -6,8 +6,9 @@ import matplotlib.pyplot as plt
 
 
 img = Image.open("Image.jpg", 'r')
-pixels = list(img.getdata())
+pixels = list(img.getdata()) # Flatten the rgb values of pixels in a list
 
+# Function for initializing first set of cluster centers
 def initialize_centers(k):
     centers = []
     for i in range(k):
@@ -18,12 +19,14 @@ def initialize_centers(k):
     return centers
         
 
+# Function for calculating squared distance of all pixel values from a center
 def distance(center):
     diff = np.array(pixels)-center
     distances = [i[0]**2+i[1]**2+i[2]**2 for i in diff]
     return distances
 
 
+# Function for assigning pixels to clusters according to euclidean distance
 def assign_pixel_clusters(k, centers, pixels_clusters):
     distances = []
     for c in range(k):
@@ -39,6 +42,7 @@ def assign_pixel_clusters(k, centers, pixels_clusters):
         pixels_clusters[i] = cluster
             
         
+# Function for finding new centers from mean of pixels values belonging to a cluster
 def find_new_centers(k, centers, pixels_clusters):
     for i in range(k):
         indices = np.where(pixels_clusters==i)
@@ -47,6 +51,7 @@ def find_new_centers(k, centers, pixels_clusters):
         centers[i] = mean
         
 
+# Main function performing K Means clustering on tha image and plotting the results
 def segmented_image(k):
     print("K = ",k)
     centers = initialize_centers(k)

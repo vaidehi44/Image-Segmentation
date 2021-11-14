@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 img = Image.open("Image.jpg", 'r')
 img_size = img.size
 total_pixels = img_size[0]*img_size[1]
-pixels = img.load()
+pixels = img.load() # pixel values as 2-D matrix
 
-loc_pixels_coor = []
+loc_pixels_coor = [] # List storing pixels location and rgb values as a 5-D feature
 
 for i in range(img_size[1]):
     for j in range(img_size[0]):
@@ -19,6 +19,7 @@ for i in range(img_size[1]):
         loc_pixels_coor.append(arr)
         
 
+# Function for initializing first set of cluster centers
 def initialize_centers(k):
     centers = []
     for i in range(k):
@@ -31,12 +32,14 @@ def initialize_centers(k):
     return centers
     
 
+# Function for calculating squared distance of all pixel values from a center
 def distance(center):
     diff = np.array(loc_pixels_coor)-center
     distances = [i[0]**2+i[1]**2+i[2]**2+i[3]**2+i[4]**2 for i in diff]
     return distances
 
 
+# Function for assigning pixels to clusters according to euclidean distance
 def assign_pixel_clusters(k, centers, pixels_clusters):
     distances = []
     for c in range(k):
@@ -52,6 +55,7 @@ def assign_pixel_clusters(k, centers, pixels_clusters):
         pixels_clusters[i] = cluster
             
         
+# Function for finding new centers from mean of 5-D features belonging to a cluster
 def find_new_centers(k, centers, pixels_clusters):
     for i in range(k):
         indices = np.where(pixels_clusters==i)
@@ -60,6 +64,7 @@ def find_new_centers(k, centers, pixels_clusters):
         centers[i] = mean
         
 
+# Main function performing K Means clustering on tha image and plotting the results
 def segmented_image(k):
     print("K = ",k)
     centers = initialize_centers(k)
