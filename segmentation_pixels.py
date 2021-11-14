@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 
 img = Image.open("Image.jpg", 'r')
 pixels = list(img.getdata())
-pix = img.load()
 
 def initialize_centers(k):
     centers = []
@@ -53,7 +52,7 @@ def segmented_image(k):
     centers = initialize_centers(k)
     pixels_clusters = np.zeros(len(pixels))
 
-    for itr in tqdm(range(5)):
+    for itr in tqdm(range(10)):
         assign_pixel_clusters(k, centers, pixels_clusters)
         find_new_centers(k, centers, pixels_clusters)
     new_pixels = []
@@ -73,9 +72,12 @@ def segmented_image(k):
     plt.xticks([]), plt.yticks([])
     plt.show()
     
+print("Segmentation using only pixel colour values as features")
 
 segmented_image(2)
 segmented_image(3)
 segmented_image(5)
 segmented_image(7)
+segmented_image(10)
+
 
