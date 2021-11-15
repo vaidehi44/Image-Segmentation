@@ -70,7 +70,7 @@ def segmented_image(k):
     centers = initialize_centers(k)
     pixels_clusters = np.zeros(total_pixels)
 
-    for itr in tqdm(range(5)):
+    for itr in tqdm(range(10)):
         assign_pixel_clusters(k, centers, pixels_clusters)
         find_new_centers(k, centers, pixels_clusters)
     new_pixels = []
