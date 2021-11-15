@@ -5,7 +5,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
-img = Image.open("Image.jpg", 'r')
+img = Image.open("./Images/Image.jpg", 'r')
 pixels = list(img.getdata()) # Flatten the rgb values of pixels in a list
 
 # Function for initializing first set of cluster centers

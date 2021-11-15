@@ -5,7 +5,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
-img = Image.open("Image.jpg", 'r')
+img = Image.open("./Images/Image.jpg", 'r')
 img_size = img.size
 total_pixels = img_size[0]*img_size[1]
 pixels = img.load() # pixel values as 2-D matrix
