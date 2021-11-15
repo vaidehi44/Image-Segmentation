@@ -14,12 +14,19 @@ comprising the intensities of the red, blue, and green channels, and the
 algorithm simply treats each pixel in the image as a separate data point. The file `segmentation_pixels.py` executes the code. 
 Here are results for some values of K -
 
-
-
+<p>
+  <img src="./Images/img1.png" height="300">
+  <img src="./Images/img2.png" height="300">
+</p>
 
 ## 2. Considering both pixel colors and their locations as features
 
 The previous approach is not a particularly sophisticated approach
 to image segmentation, because it takes no account of the spatial proximity
 of different pixels. Hence, inorder to also consider the location of pixels, I prepared a 5 dimensional data, consisting of x and y coordinates of a pixel along with its 
-rgb values. Also, I rescaled the pixel locations in the range of 0 to 255, same as that of rgb values. Results for some values of K are -
+rgb values. Also, I rescaled the pixel locations in the range of 0 to 255, same as that of rgb values. The code is contained in the file `segmentation_loc_pixels.py`. Results for some values of K are -
+
+<p>
+  <img src="./Images/img3.png" height="300">
+  <img src="./Images/img4.png" height="300">
+</p>
